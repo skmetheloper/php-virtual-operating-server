@@ -2,17 +2,6 @@
 
 ROOT=$(cd $(dirname $(dirname "${BASH_SOURCE[0]}")) && pwd)
 
-center() {
-	local buffer=${1:?'required argument (buffer_skze)'}	
-	local input="${2:?''}"
-	local len=$(((buffer-${#input})/2)) 
-	[ $len -lt 0 ] && len=0
-	printf "%${len}s%s%${len}s" '' $input ''
-	return 0
-}
-
-export function center
-
 export SHELL="$(command -v bash)"
 export HOME="$ROOT/home"
 export TMPDIR="$ROOT/tmp"
