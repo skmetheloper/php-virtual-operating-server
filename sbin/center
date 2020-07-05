@@ -1,0 +1,9 @@
+#!/bin/bash
+
+buffer=${1:?'required argument (buffer_size)'}	
+input="${2:?''}"
+len=$(((buffer-${#input})/2)) 
+
+[ $len -lt 0 ] && len=0
+
+printf "%${len}s%s%${len}s" '' $input ''
