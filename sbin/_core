@@ -1,6 +1,8 @@
 #!/bin/bash
+CWD=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+ROOT=$(cd $(dirname "$CWD") && pwd)
 
-ROOT=$(cd $(dirname $(dirname "${BASH_SOURCE[0]}")) && pwd)
+chmod +x "$CWD/*"
 
 export SHELL="$(command -v bash)"
 export HOME="$ROOT/home"
