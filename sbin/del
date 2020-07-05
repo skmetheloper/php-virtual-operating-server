@@ -6,9 +6,9 @@ dir
 
 while [[ $i -lt $# ]]; do
 	dir="$ROOT/${dirs[$i]}"
-	if [[ -d $dir ]]; then
+	if [[ -e $dir ]]; then
 		echo -e "=> \033[0;34mDirectory '$dir' was deleted .\033[0m"
-		rm -r $dir
+		rm $dir
 	fi
 	((i=i+1))
 done
