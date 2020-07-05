@@ -2,7 +2,7 @@
 
 ROOT=${1:?'required parameter (root_dir)'}
 
-echo "Your root directory is: $ROOT\n\n"
+echo -e "Your root directory is: $ROOT\n\n"
 
 export SHELL="$(command -v bash)"
 export HOME="$ROOT/home"
