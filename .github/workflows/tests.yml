@@ -13,13 +13,13 @@ jobs:
   steps:
     - uses: actions/checkout@v2
 
-    - name: Starting "Ethereal OS"
+    - name: Starting - Ethereal OS
       run: source boot
 
     - name: File Structure
-      run du -h
+      run: du -h
 
-    - name: Remove "Ethereal OS"
+    - name: Removing - Ethereal OS
       run: sbin/clean
 
     - name: Listing Files
