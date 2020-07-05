@@ -6,4 +6,4 @@
 echo -e "* \033[0;34mCleaning root directory...\033[0m"
 echo && sleep 1
 
-deldir bin dev proc mnt opt var tmp lib
+del bin dev proc mnt opt var tmp lib
