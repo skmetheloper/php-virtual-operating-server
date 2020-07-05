@@ -1,2 +1,10 @@
 .DS_Store
+bin/
+dev/
+etc/
+lib/
+mnt/
+opt/
+tmp/
+var/
 
