@@ -1,20 +1,22 @@
-linkfile=${1:?'required argument (path)'}
+#!/bin/bash
+
+link=${1:?'required argument (path)'}
 target=${2:?'required argument (target)'}
-rejected='\033[%dm[%s] %s %s\033[0m\r\n'
-resolved='\033[%dm[%s] %s -> %s\033[0m\r\n'
+rejected='\033[%dm[%s] "%s" - %s\033[0m\r\n'
+resolved='\033[%dm[%s] "%s" -> "%s"\033[0m\r\n'
 
 delay 260
 
 if [[ ! -d "$target" ]]; then
-	printf "$rejected" 31 "$(center 6 FAIL)" $target 'Unexisted target directory'
-	return 0
+	printf "$rejected" 31 "$(center 6 FAIL)" "$target" "unexisted target directory"
+	exit 1
 fi
 
-if [[ -d "$ROOT/$path" ]]; then
-	printf "$rejected" 33 "$(center 6 FAIL)" $path 'Already existed'
-	return 0
+if [[ -d "$ROOT/$link" ]]; then
+	printf "$rejected" 33 "$(center 6 FAIL)" "$link" "directory was already existed"
+	exit 1
 fi 
 
-printf "$resolved" 32 "$(center 6 LINK)" $path $target 
+printf "$resolved" 32 "$(center 6 LINK)" "$link" "$target"
 
-ln -s "$target" "$ROOT/$path"
+ln -s "$target" "$ROOT/$link"

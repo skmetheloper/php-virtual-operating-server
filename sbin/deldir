@@ -1,8 +1,8 @@
 #!/bin/bash
 
-local i=0
-local dirs=($@)
-local dir
+i=0
+dirs=($@)
+dir
 
 while [[ $i -lt $# ]]; do
 	dir="$ROOT/${dirs[$i]}"

@@ -1,12 +1,16 @@
 #!/bin/bash
 
-echo -e "\033[1;44;37m ETHEREAL \033[1;2;47;30m PHP VIRTUAL OPERATING SERVER \033[0m\r\n"
+export ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/sbin/_core"
+source "$ROOT/usr/include/_core"
+
+export PATH="$PATH:$ROOT/bin:$ROOT/sbin:$PREFIX/bin:$PREFIX/local/bin"
+
+echo -e "\033[0;1;47;30m ETHEREAL \033[0;44;37m PHP VIRTUAL OPERATING SERVER \033[0m\r\n"
 
 lndir opt /opt
 lndir mnt /mnt
-lndir root /home
+lndir home /root
 lndir bin /bin
 lndir lib /lib
 lndir proc /proc

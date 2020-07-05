@@ -1,8 +1,4 @@
 #!/bin/bash
-CWD=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
-ROOT=$(cd $(dirname "$CWD") && pwd)
-
-chmod +x "$CWD/*"
 
 export SHELL="$(command -v bash)"
 export HOME="$ROOT/home"
@@ -11,5 +7,4 @@ export PREFIX="$ROOT/usr"
 export SVDIR="$PREFIX/var/service"
 export LOGDIR="$PRFIX/var/log"
 export _="$PREFIX/bin/env"
-export PATH="$PATH:$ROOT/bin:$ROOT/sbin:$PREFIX/bin:$PREFIX/local/bin"
 
