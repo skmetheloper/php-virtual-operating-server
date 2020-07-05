@@ -13,4 +13,3 @@ PATH="$ROOT/bin:$PATH"
 
 cd && pwd
 
-env
