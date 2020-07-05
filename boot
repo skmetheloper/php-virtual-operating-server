@@ -2,9 +2,9 @@
 
 set +e
 
-export ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-source "$ROOT/usr/include/_core"
+source "$ROOT/usr/include/_core" "$ROOT"
 
 echo -e "\033[0;1;47;30m ETHEREAL \033[0;44;37m PHP VIRTUAL OPERATING SERVER \033[0m\r\n"
 
