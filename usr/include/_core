@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ROOT=${1:-"$(cd "$(dirname "$(dirname "${BASH_SOURCE[0]}")")" && pwd)"}
+
 export SHELL="$(command -v bash)"
 export HOME="$ROOT/home"
 export TMPDIR="$ROOT/tmp"
