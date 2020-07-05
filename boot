@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set +e
+
 export ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 source "$ROOT/usr/include/_core"
