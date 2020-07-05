@@ -1,6 +1,8 @@
 #!/bin/bash
 
-ROOT=${1:-"$(cd "$(dirname "$(dirname "${BASH_SOURCE[0]}")")" && pwd)"}
+ROOT=${1:?'required parameter (root_dir)'}
+
+echo "Your root directory is: $ROOT\n\n"
 
 export SHELL="$(command -v bash)"
 export HOME="$ROOT/home"
@@ -9,4 +11,3 @@ export PREFIX="$ROOT/usr"
 export SVDIR="$PREFIX/var/service"
 export LOGDIR="$PRFIX/var/log"
 export _="$PREFIX/bin/env"
-
