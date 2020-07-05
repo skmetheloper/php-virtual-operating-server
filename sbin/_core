@@ -13,42 +13,6 @@ center() {
 
 export function center
 
-delay() {
-	local ms=${1:-0}
-	if [[ $ms -lt 1000 ]]; then
-		sleep 0.$ms
-	else
-		sleep $((ms/1000))
-	fi
-}
-
-export function delay
-
-symlink() {
-	local path=${1:?'required argument (path)'}
-	local target=${2:?'required argument (target)'}
-	local rejected='\033[%dm[%s] %s %s\033[0m\r\n'
-	local resolved='\033[%dm[%s] %s -> %s\033[0m\r\n'
-
-	delay 260
-
-	if [[ ! -d "$target" ]]; then
-		printf "$rejected" 31 "$(center 6 FAIL)" $target 'Unexisted target directory'
-		return 0
-	fi
-
-	if [[ -d "$ROOT/$path" ]]; then
-		printf "$rejected" 33 "$(center 6  FAIL)" $path 'Already existed'
-		return 0
-	fi
-
-	printf "$resolved" 32 "$(center 6 LINK)" $path $target 
-
-	ln -s "$target" "$ROOT/$path" 	
-}
-
-export function symlink
-
 export SHELL="$(command -v bash)"
 export HOME="$ROOT/home"
 export TMPDIR="$ROOT/tmp"
