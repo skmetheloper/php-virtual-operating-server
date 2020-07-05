@@ -1,5 +1,8 @@
 #!/bin/bash
 
+[[ -n "$(command -v deldir)" ]] ||
+  source "$(cd "$(dirname "${BASH_SOURCEA[0]}")" && pwd)/boot"
+
 echo -e "* \033[0;34mCleaning root directory...\033[0m"
 echo && sleep 1
 
