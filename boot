@@ -1,10 +1,8 @@
 #!/bin/bash
 
-set -e
+set +e
 
-echo -e "\033[1;44;37m ETHEREAL \033[1;2;47;30m PHP VIRTUAL OPERATING SERVER \033[0m"
-
-echo | sleep 1
+echo -e "\033[1;44;37m ETHEREAL \033[1;2;47;30m PHP VIRTUAL OPERATING SERVER \033[0m\r\n"
 
 ROOT="$(cd "$(dirname ${BASH_SOURCE[0]})" && echo $(pwd))"
 
@@ -19,26 +17,46 @@ PREFIX="$ROOT/usr"
 SVDIR="$PREFIX/var/service"
 
 LOGDIR="$PRFIX/var/log"
+
 _="$PREFIX/bin/env"
+
+center() {
+	local buffer=${1:?'required argument (buffer_skze)'}	
+	local input="${2:?''}"
+	local len=$(((buffer-${#input})/2)) 
+	[ $len -lt 0 ] && len=0
+	printf "%${len}s%s%${len}s" '' $input ''
+	return 0
+}
+
+delay() {
+	local ms=${1:-0}
+	if [[ $ms -lt 1000 ]]; then
+		sleep 0.$ms
+	else
+		sleep $((ms/1000))
+	fi
+}
 
 symlink() {
 	local path=${1:?'required argument (path)'}
-
 	local target=${2:?'required argument (target)'}
+	local rejected='\033[%dm[%s] %s %s\033[0m\r\n'
+	local resolved='\033[%dm[%s] %s -> %s\033[0m\r\n'
 
-	sleep 1
+	delay 260
 
-	if ! [[ -d "$target" ]]; then
-		echo -e "=> \033[0;31mCould not link with unexisted target directory '$target'.\033[0m"
+	if [[ ! -d "$target" ]]; then
+		printf "$rejected" 31 "$(center 6 FAIL)" $target 'Unexisted target directory'
 		return 0
 	fi
 
 	if [[ -d "$ROOT/$path" ]]; then
-		echo -e "=> \033[0;33m'$ROOT/$path' was already existed.\033[0m"
+		printf "$rejected" 33 "$(center 6  FAIL)" $path 'Already existed'
 		return 0
 	fi
 
-	echo -e "=> \033[0;32m'$ROOT/$path' was link with '$target' directory.\033[0m"
+	printf "$resolved" 32 "$(center 6 LINK)" $path $target 
 
 	ln -s "$target" "$ROOT/$path" 	
 }
@@ -46,6 +64,13 @@ symlink() {
 symlink opt /opt
 symlink mnt /mnt
 symlink root /home
+symlink bin /bin
+symlink lib /lib
+symlink proc /proc
+symlink dev /dev
+symlink tmp "$PREFIX/tmp"
+symlink var "$PREFIX/var"
 
-PATH="$ROOT/bin:$PREFIX/bin:$PREFIX/sbin:$PREFIX/local/bin"
+PATH="$ROOT/bin:$ROOT/sbin:$PREFIX/bin:$PREFIX/local/bin"
 
+echo $PATH

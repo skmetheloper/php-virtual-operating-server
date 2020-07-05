@@ -1,0 +1,25 @@
+#!/bin/bash
+
+ROOT=$(cd $(dirname $(dirname "${BASH_SOURCE[0]}")) && pwd)
+
+del() {
+	local i=0
+	local dirs=($@)
+    
+	local dir
+
+	while [[ $i -lt $# ]]
+	do
+		dir="$ROOT/${dirs[$i]}"
+		if [[ -d $dir ]]; then
+			echo -e "=> \033[0;34mDirectory '$dir' was deleted .\033[0m"
+			rm -r $dir
+		fi
+		((i=i+1))
+	done
+}
+
+echo -e "* \033[0;34mCleaning root directory...\033[0m"
+echo && sleep 1
+
+del bin dev proc mnt opt var tmp
