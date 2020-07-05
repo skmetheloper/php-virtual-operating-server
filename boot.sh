@@ -2,12 +2,15 @@
 
 ROOT="$(cd "$(dirname ${BASH_SOURCE[0]})" && echo $(pwd))"
 
-PATH="$"
-HOME=$ROOT/home
-TMPDIR=$ROOT/tmp
-PREFIX=$ROOT/usr
-SVDIR=$PREFIX/var/service
-LOGDIR=$PREFIX/var/log
+SHELL="$(command -v bash)"
+HOME="$ROOT/home"
+TMPDIR="$ROOT/tmp"
+PREFIX="$ROOT/usr"
+SVDIR="$ROOT/var/service"
+LOGDIR="$ROOT/var/log"
+_="$ROOT/bin/env"
+PATH="$ROOT/bin:$PATH"
 
+cd && pwd
 
-
+env
