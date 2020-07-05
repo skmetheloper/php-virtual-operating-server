@@ -4,13 +4,13 @@ echo -e "\033[1;44;37m ETHEREAL \033[1;2;47;30m PHP VIRTUAL OPERATING SERVER \03
 
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/sbin/_core"
 
-symlink opt /opt
-symlink mnt /mnt
-symlink root /home
-symlink bin /bin
-symlink lib /lib
-symlink proc /proc
-symlink dev /dev
-symlink tmp "$PREFIX/tmp"
-symlink var "$PREFIX/var"
-echo $PATH
+lndir opt /opt
+lndir mnt /mnt
+lndir root /home
+lndir bin /bin
+lndir lib /lib
+lndir proc /proc
+lndir dev /dev
+lndir tmp "$PREFIX/tmp"
+lndir var "$PREFIX/var"
+
