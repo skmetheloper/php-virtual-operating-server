@@ -14,14 +14,14 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Starting - Ethereal OS
-      run: source boot
+      run: boot
 
     - name: File Structure
-      run: du -h
+      run: du -h $HOME
 
     - name: Removing - Ethereal OS
       run: sbin/clean
 
     - name: Listing Files
-      run: ls -RAl
+      run: ls -RAl $HOME
 
