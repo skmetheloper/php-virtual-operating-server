@@ -1,0 +1,2 @@
+speed 38400 baud; line = 0;
+-brkint -imaxbel iutf8
